@@ -7,6 +7,7 @@ import {
 } from "ai";
 
 import { completionBudget, createLanguageModel, planModel } from "@/lib/ai/model";
+import { publicChatError } from "@/lib/ai/public-error";
 import { sanitizeMessages } from "@/lib/ai/messages";
 import { buildInstructions, repositoryIndex } from "@/lib/ai/prompt";
 import { createRepoTools } from "@/lib/ai/tools";
@@ -61,7 +62,7 @@ export async function POST(request: Request) {
     });
 
     return createUIMessageStreamResponse({
-      stream: toUIMessageStream({ stream: result.stream }),
+      stream: toUIMessageStream({ stream: result.stream, onError: publicChatError }),
     });
   } catch (error) {
     return jsonError(error);
