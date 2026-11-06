@@ -1,0 +1,23 @@
+export const LIMITS = {
+  maxUrlLength: 300,
+  maxPathLength: 400,
+  maxFileBytes: 100_000,
+  maxReadLines: 160,
+  maxSearchFiles: 6,
+  maxSearchMatches: 8,
+  maxSearchWindow: 6,
+  maxListResults: 80,
+  maxSamplePaths: 40,
+  maxIndexPaths: 200,
+  maxTreeFiles: 5_000,
+  maxMessages: 16,
+  maxMessageChars: 4_000,
+  maxConversationChars: 20_000,
+  maxRequestBytes: 1_000_000,
+  maxToolSteps: 6,
+  /** Per-step completion cap for the compatible gateway. Large enough that reasoning does not exhaust the budget before a tool call or answer. */
+  compatibleMaxOutputTokens: 8_192,
+  maxQueryLength: 200,
+  cacheTtlMs: 10 * 60 * 1000,
+  cacheEntries: 30,
+} as const;
